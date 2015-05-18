@@ -72,9 +72,11 @@ namespace TestCOMServer
         ClassInterface(ClassInterfaceType.AutoDual),
         ComSourceInterfaces(
             typeof(ICOMTestString),
-            typeof(ICOMTestInt16)
+            typeof(ICOMTestInt16),
+            typeof(ICOMTestInt32),
+            typeof(ICOMTestInt64)
         )]
-    public class COMTestClass1 : ICOMTestString, ICOMTestInt16, ICOMTestInt32
+    public class COMTestClass1 : ICOMTestString, ICOMTestInt16, ICOMTestInt32, ICOMTestInt64
     {
         protected string rawString;
         protected Int16 rawInt16;
@@ -110,7 +112,7 @@ namespace TestCOMServer
             rawString = "";
             rawInt16 = 0;
             rawInt32 = 0;
-
+            rawInt64 = 0;
         }
 
         public string EchoString(string value)
@@ -161,19 +163,19 @@ namespace TestCOMServer
         {
             return rawInt32;
         }
-        
-        Int64 EchoInt64(Int64 value)
+
+        public Int64 EchoInt64(Int64 value)
         {
             return value;
         }
 
-        int PutInt64(Int64 value)
+        public int PutInt64(Int64 value)
         {
             rawInt64 = value;
             return 1;
         }
 
-        Int64 GetInt64()
+        public Int64 GetInt64()
         {
             return rawInt64;
         }
