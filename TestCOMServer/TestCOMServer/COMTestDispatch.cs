@@ -68,20 +68,55 @@ namespace TestCOMServer
     }
 
     [ComVisible(true),
+        Guid("BF1ED004-EA02-456A-AA55-2AC8AC6B054C"),
+        InterfaceType(ComInterfaceType.InterfaceIsDual)]
+    public interface ICOMTestFloat
+    {
+        float FloatField
+        {
+            get;
+            set;
+        }
+
+        float EchoFloat(float value);
+        int PutFloat(float value);
+        float GetFloat();
+    }
+
+    [ComVisible(true),
+        Guid("BF908A81-8687-4E93-999F-D86FAB284BA0"),
+        InterfaceType(ComInterfaceType.InterfaceIsDual)]
+    public interface ICOMTestDouble
+    {
+        double DoubleField
+        {
+            get;
+            set;
+        }
+
+        double EchoDouble(double value);
+        int PutDouble(double value);
+        double GetDouble();
+    }
+
+    [ComVisible(true),
+        Guid("CCA8D7AE-91C0-4277-A8B3-FF4EDF28D3C0"),
+        InterfaceType(ComInterfaceType.InterfaceIsDual)]
+    public interface ICOMTestTypes : ICOMTestString, ICOMTestInt16, ICOMTestInt32, ICOMTestInt64, ICOMTestFloat, ICOMTestDouble
+    {}
+
+    [ComVisible(true),
         Guid("865B85C5-0334-4AC6-9EF6-AACEC8FC5E86"),
         ClassInterface(ClassInterfaceType.AutoDual),
-        ComSourceInterfaces(
-            typeof(ICOMTestString),
-            typeof(ICOMTestInt16),
-            typeof(ICOMTestInt32),
-            typeof(ICOMTestInt64)
-        )]
-    public class COMTestClass1 : ICOMTestString, ICOMTestInt16, ICOMTestInt32, ICOMTestInt64
+        ComSourceInterfaces(typeof(ICOMTestTypes))]
+    public class COMTestScalarClass : ICOMTestTypes
     {
         protected string rawString;
         protected Int16 rawInt16;
         protected Int32 rawInt32;
         protected Int64 rawInt64;
+        protected float rawFloat;
+        protected double rawDouble;
 
         public string StringField
         {
@@ -107,12 +142,26 @@ namespace TestCOMServer
             set { rawInt64 = value; }
         }
 
-        COMTestClass1()
+        public float FloatField
+        {
+            get { return rawFloat; }
+            set { rawFloat = value; }
+        }
+
+        public double DoubleField
+        {
+            get { return rawDouble; }
+            set { rawDouble = value; }
+        }
+
+        COMTestScalarClass()
         {
             rawString = "";
             rawInt16 = 0;
             rawInt32 = 0;
             rawInt64 = 0;
+            rawFloat = 0.0f;
+            rawDouble = 0.0;
         }
 
         public string EchoString(string value)
@@ -147,7 +196,6 @@ namespace TestCOMServer
             return rawInt16;
         }
 
-
         public Int32 EchoInt32(Int32 value)
         {
             return value;
@@ -178,6 +226,38 @@ namespace TestCOMServer
         public Int64 GetInt64()
         {
             return rawInt64;
+        }
+
+        public float EchoFloat(float value)
+        {
+            return value;
+        }
+
+        public int PutFloat(float value)
+        {
+            rawFloat = value;
+            return 1;
+        }
+
+        public float GetFloat()
+        {
+            return rawFloat;
+        }
+
+        public double EchoDouble(double value)
+        {
+            return value;
+        }
+
+        public int PutDouble(double value)
+        {
+            rawDouble = value;
+            return 1;
+        }
+
+        public double GetDouble()
+        {
+            return rawDouble;
         }
 
     }
