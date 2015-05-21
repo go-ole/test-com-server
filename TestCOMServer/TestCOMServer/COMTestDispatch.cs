@@ -13,10 +13,33 @@ namespace TestCOMServer
             get;
             set;
         }
-
-        string EchoString(string value);
+        
         int PutString(string value);
         string GetString();
+    }
+
+    [ComVisible(true),
+        Guid("BEB06610-EB84-4155-AF58-E2BFF53608B4"),
+        InterfaceType(ComInterfaceType.InterfaceIsDual)]
+    public interface ICOMTestInt8
+    {
+        sbyte Int8Field
+        {
+            get;
+            set;
+        }
+
+        byte UInt8Field
+        {
+            get;
+            set;
+        }
+
+        int PutInt8(sbyte value);
+        sbyte GetInt8();
+
+        int PutUInt8(byte value);
+        byte GetUInt8();
     }
 
     [ComVisible(true),
@@ -24,15 +47,23 @@ namespace TestCOMServer
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface ICOMTestInt16
     {
-        Int16 Int16Field
+        short Int16Field
         {
             get;
             set;
         }
 
-        Int16 EchoInt16(Int16 value);
-        int PutInt16(Int16 value);
-        Int16 GetInt16();
+        ushort UInt16Field
+        {
+            get;
+            set;
+        }
+
+        int PutInt16(short value);
+        short GetInt16();
+
+        int PutUInt16(ushort value);
+        ushort GetUInt16();
     }
 
     [ComVisible(true),
@@ -40,15 +71,23 @@ namespace TestCOMServer
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface ICOMTestInt32
     {
-        Int32 Int32Field
+        int Int32Field
         {
             get;
             set;
         }
 
-        Int32 EchoInt32(Int32 value);
-        int PutInt32(Int32 value);
-        Int32 GetInt32();
+        uint UInt32Field
+        {
+            get;
+            set;
+        }
+
+        int PutInt32(int value);
+        int GetInt32();
+
+        uint PutUInt32(uint value);
+        uint GetUInt32();
     }
 
     [ComVisible(true),
@@ -56,15 +95,23 @@ namespace TestCOMServer
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface ICOMTestInt64
     {
-        Int64 Int64Field
+        long Int64Field
         {
             get;
             set;
         }
 
-        Int64 EchoInt64(Int64 value);
-        int PutInt64(Int64 value);
-        Int64 GetInt64();
+        ulong UInt64Field
+        {
+            get;
+            set;
+        }
+        
+        int PutInt64(long value);
+        long GetInt64();
+        
+        int PutUInt64(ulong value);
+        ulong GetUInt64();
     }
 
     [ComVisible(true),
@@ -77,8 +124,7 @@ namespace TestCOMServer
             get;
             set;
         }
-
-        float EchoFloat(float value);
+        
         int PutFloat(float value);
         float GetFloat();
     }
@@ -93,17 +139,99 @@ namespace TestCOMServer
             get;
             set;
         }
-
-        double EchoDouble(double value);
+        
         int PutDouble(double value);
         double GetDouble();
     }
 
     [ComVisible(true),
+        Guid("D530E7A6-4EE8-40D1-8931-3D63B8605001"),
+        InterfaceType(ComInterfaceType.InterfaceIsDual)]
+    public interface ICOMTestBoolean
+    {
+        bool BooleanField
+        {
+            get;
+            set;
+        }
+        
+        int PutBoolean(bool value);
+        bool GetBoolean();
+    }
+
+    [ComVisible(true),
         Guid("CCA8D7AE-91C0-4277-A8B3-FF4EDF28D3C0"),
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
-    public interface ICOMTestTypes : ICOMTestString, ICOMTestInt16, ICOMTestInt32, ICOMTestInt64, ICOMTestFloat, ICOMTestDouble
-    {}
+    public interface ICOMTestTypes : 
+        ICOMTestString,
+        ICOMTestInt8,
+        ICOMTestInt16,
+        ICOMTestInt32,
+        ICOMTestInt64,
+        ICOMTestFloat,
+        ICOMTestDouble,
+        ICOMTestBoolean
+    { }
+
+    [ComVisible(true),
+        Guid("6485B1EF-D780-4834-A4FE-1EBB51746CA3"),
+        InterfaceType(ComInterfaceType.InterfaceIsDual)]
+    public interface ICOMTestObject
+    {
+        sbyte EchoInt8(sbyte value);
+        byte EchoUInt8(byte value);
+        short EchoInt16(short value);
+        ushort EchoUInt16(ushort value);
+        int EchoInt32(int value);
+        uint EchoUInt32(uint value);
+        long EchoInt64(long value);
+        ulong EchoUInt64(ulong value);
+        float EchoFloat(float value);
+        double EchoDouble(double value);
+        string EchoString(string value);
+    }
+
+    [ComVisible(true),
+        Guid("865B85C5-0334-4AC6-9EF6-AACEC8FC5E86"),
+        ClassInterface(ClassInterfaceType.AutoDual),
+        ComSourceInterfaces(typeof(ICOMTestObject))]
+    public class COMTestObjectType : ICOMTestObject
+    {
+        public string EchoString(string value)
+        {
+            return value;
+        }
+
+        public Int16 EchoInt16(Int16 value)
+        {
+            return value;
+        }
+
+        public Int32 EchoInt32(Int32 value)
+        {
+            return value;
+        }
+
+        public Int64 EchoInt64(Int64 value)
+        {
+            return value;
+        }
+
+        public float EchoFloat(float value)
+        {
+            return value;
+        }
+
+        public double EchoDouble(double value)
+        {
+            return value;
+        }
+
+        public bool EchoBoolean(bool value)
+        {
+            return value;
+        }
+    }
 
     [ComVisible(true),
         Guid("865B85C5-0334-4AC6-9EF6-AACEC8FC5E86"),
@@ -112,11 +240,17 @@ namespace TestCOMServer
     public class COMTestScalarClass : ICOMTestTypes
     {
         protected string rawString;
-        protected Int16 rawInt16;
-        protected Int32 rawInt32;
-        protected Int64 rawInt64;
+        protected sbyte rawInt8;
+        protected byte rawUInt8;
+        protected short rawInt16;
+        protected ushort rawUInt16;
+        protected int rawInt32;
+        protected uint rawUInt32;
+        protected long rawInt64;
+        protected ulong rawUInt64;
         protected float rawFloat;
         protected double rawDouble;
+        protected bool rawBoolean;
 
         public string StringField
         {
@@ -124,22 +258,52 @@ namespace TestCOMServer
             set { rawString = value; }
         }
 
-        public Int16 Int16Field
+        public sbyte Int8Field
+        {
+            get { return rawInt8; }
+            set { rawInt8 = value; }
+        }
+
+        public byte UInt8Field
+        {
+            get { return rawUInt8; }
+            set { rawUInt8 = value; }
+        }
+
+        public short Int16Field
         {
             get { return rawInt16; }
             set { rawInt16 = value; }
         }
 
-        public Int32 Int32Field
+        public ushort UInt16Field
+        {
+            get { return rawUInt16; }
+            set { rawUInt16 = value; }
+        }
+
+        public int Int32Field
         {
             get { return rawInt32; }
             set { rawInt32 = value; }
         }
 
-        public Int64 Int64Field
+        public uint UInt32Field
+        {
+            get { return rawUInt32; }
+            set { rawUInt32 = value; }
+        }
+
+        public long Int64Field
         {
             get { return rawInt64; }
             set { rawInt64 = value; }
+        }
+
+        public ulong UInt64Field
+        {
+            get { return rawUInt64; }
+            set { rawUInt64 = value; }
         }
 
         public float FloatField
@@ -154,6 +318,12 @@ namespace TestCOMServer
             set { rawDouble = value; }
         }
 
+        bool BooleanField
+        {
+            get { return rawBoolean; }
+            set { rawBoolean = value; }
+        }
+
         COMTestScalarClass()
         {
             rawString = "";
@@ -162,11 +332,7 @@ namespace TestCOMServer
             rawInt64 = 0;
             rawFloat = 0.0f;
             rawDouble = 0.0;
-        }
-
-        public string EchoString(string value)
-        {
-            return value;
+            rawBoolean = false;
         }
 
         public int PutString(string value)
@@ -180,11 +346,6 @@ namespace TestCOMServer
             return rawString;
         }
 
-        public Int16 EchoInt16(Int16 value)
-        {
-            return value;
-        }
-
         public int PutInt16(Int16 value)
         {
             rawInt16 = value;
@@ -194,11 +355,6 @@ namespace TestCOMServer
         public Int16 GetInt16()
         {
             return rawInt16;
-        }
-
-        public Int32 EchoInt32(Int32 value)
-        {
-            return value;
         }
 
         public int PutInt32(Int32 value)
@@ -212,11 +368,6 @@ namespace TestCOMServer
             return rawInt32;
         }
 
-        public Int64 EchoInt64(Int64 value)
-        {
-            return value;
-        }
-
         public int PutInt64(Int64 value)
         {
             rawInt64 = value;
@@ -226,11 +377,6 @@ namespace TestCOMServer
         public Int64 GetInt64()
         {
             return rawInt64;
-        }
-
-        public float EchoFloat(float value)
-        {
-            return value;
         }
 
         public int PutFloat(float value)
@@ -244,11 +390,6 @@ namespace TestCOMServer
             return rawFloat;
         }
 
-        public double EchoDouble(double value)
-        {
-            return value;
-        }
-
         public int PutDouble(double value)
         {
             rawDouble = value;
@@ -258,6 +399,17 @@ namespace TestCOMServer
         public double GetDouble()
         {
             return rawDouble;
+        }
+
+        public int PutBoolean(bool value)
+        {
+            rawBoolean = value;
+            return 1;
+        }
+
+        public bool GetBoolean()
+        {
+            return rawBoolean;
         }
 
     }
