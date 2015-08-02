@@ -176,7 +176,7 @@ namespace TestCOMServer
     [ComVisible(true),
         Guid("6485B1EF-D780-4834-A4FE-1EBB51746CA3"),
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
-    public interface ICOMTestObject
+    public interface ICOMEchoTestObject
     {
         sbyte EchoInt8(sbyte value);
         byte EchoUInt8(byte value);
@@ -194,25 +194,52 @@ namespace TestCOMServer
     [ComVisible(true),
         Guid("865B85C5-0334-4AC6-9EF6-AACEC8FC5E86"),
         ClassInterface(ClassInterfaceType.AutoDual),
-        ComSourceInterfaces(typeof(ICOMTestObject))]
-    public class COMTestObjectType : ICOMTestObject
+        ComSourceInterfaces(typeof(ICOMEchoTestObject))]
+    public class COMEchoTestObject : ICOMEchoTestObject
     {
         public string EchoString(string value)
         {
             return value;
         }
 
-        public Int16 EchoInt16(Int16 value)
+
+        public sbyte EchoInt8(sbyte value)
         {
             return value;
         }
 
-        public Int32 EchoInt32(Int32 value)
+
+        public byte EchoUInt8(byte value)
         {
             return value;
         }
 
-        public Int64 EchoInt64(Int64 value)
+        public short EchoInt16(short value)
+        {
+            return value;
+        }
+
+        public ushort EchoUInt16(ushort value)
+        {
+            return value;
+        }
+
+        public int EchoInt32(int value)
+        {
+            return value;
+        }
+
+        public uint EchoUInt32(uint value)
+        {
+            return value;
+        }
+
+        public long EchoInt64(long value)
+        {
+            return value;
+        }
+
+        public ulong EchoUInt64(ulong value)
         {
             return value;
         }
