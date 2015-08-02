@@ -144,23 +144,22 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if "Debug-Appveyor" == "$(ConfigurationName)" (call "$(VS100COMNTOOLS)vsvars32.bat" $(PlatformName)
+    <PostBuildEvent>if "Debug-Appveyor" == "$(ConfigurationName)" (call "$(VS100COMNTOOLS)vsvars32.bat"
 )
 
 
-if "Release-Appveyor" == "$(ConfigurationName)" (call "$(VS100COMNTOOLS)vsvars32.bat" $(PlatformName)
+if "Release-Appveyor" == "$(ConfigurationName)" (call "$(VS100COMNTOOLS)vsvars32.bat"
 )
 
 
-if "Debug" == "$(ConfigurationName)" (call "$(DevEnvDir)..\Tools\vsvars32.bat" $(PlatformName)
+if "Debug" == "$(ConfigurationName)" (call "$(DevEnvDir)..\Tools\vsvars32.bat"
 )
 
 
-if "Release" == "$(ConfigurationName)" (call "$(DevEnvDir)..\Tools\vsvars32.bat" $(PlatformName)
+if "Release" == "$(ConfigurationName)" (call "$(DevEnvDir)..\Tools\vsvars32.bat"
 )
-
-
-tlbexp $(TargetFileName) /nologo</PostBuildEvent>
+if "x32" == $(PlatformName)" (tlbexp $(TargetFileName) /nologo)
+if "x64" == $(PlatformName)" (tlbexp $(TargetFileName) /nologo /win64)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
