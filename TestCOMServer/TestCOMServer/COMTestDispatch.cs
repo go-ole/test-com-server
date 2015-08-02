@@ -86,7 +86,7 @@ namespace TestCOMServer
         int PutInt32(int value);
         int GetInt32();
 
-        uint PutUInt32(uint value);
+        int PutUInt32(uint value);
         uint GetUInt32();
     }
 
@@ -345,7 +345,7 @@ namespace TestCOMServer
             set { rawDouble = value; }
         }
 
-        bool BooleanField
+        public bool BooleanField
         {
             get { return rawBoolean; }
             set { rawBoolean = value; }
@@ -365,7 +365,7 @@ namespace TestCOMServer
         public int PutString(string value)
         {
             rawString = value;
-            return 1;
+            return value.Length;
         }
 
         public string GetString()
@@ -373,37 +373,92 @@ namespace TestCOMServer
             return rawString;
         }
 
-        public int PutInt16(Int16 value)
+        public int PutInt8(sbyte value)
+        {
+            rawInt8 = value;
+            return 1;
+        }
+
+        public sbyte GetInt8()
+        {
+            return rawInt8;
+        }
+
+        public int PutUInt8(byte value)
+        {
+            rawUInt8 = value;
+            return 1;
+        }
+
+        public byte GetUInt8()
+        {
+            return rawUInt8;
+        }
+
+        public int PutInt16(short value)
         {
             rawInt16 = value;
             return 1;
         }
 
-        public Int16 GetInt16()
+        public short GetInt16()
         {
             return rawInt16;
         }
 
-        public int PutInt32(Int32 value)
+        public int PutUInt16(ushort value)
+        {
+            rawUInt16 = value;
+            return 1;
+        }
+
+        public ushort GetUInt16()
+        {
+            return rawUInt16;
+        }
+
+        public int PutInt32(int value)
         {
             rawInt32 = value;
             return 1;
         }
 
-        public Int32 GetInt32()
+        public int GetInt32()
         {
             return rawInt32;
         }
 
-        public int PutInt64(Int64 value)
+        public int PutUInt32(uint value)
+        {
+            rawUInt32 = value;
+            return 1;
+        }
+
+        public uint GetUInt32()
+        {
+            return rawUInt32;
+        }
+
+        public int PutInt64(long value)
         {
             rawInt64 = value;
             return 1;
         }
 
-        public Int64 GetInt64()
+        public long GetInt64()
         {
             return rawInt64;
+        }
+
+        public int PutUInt64(ulong value)
+        {
+            rawUInt64 = value;
+            return 1;
+        }
+
+        public ulong GetUInt64()
+        {
+            return rawUInt64;
         }
 
         public int PutFloat(float value)
