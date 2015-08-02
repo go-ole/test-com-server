@@ -16,22 +16,22 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\AnyCPU\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RegisterForComInterop>false</RegisterForComInterop>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\AnyCPU\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RegisterForComInterop>false</RegisterForComInterop>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -39,7 +39,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -51,7 +51,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -59,7 +59,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -71,67 +71,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Appveyor|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug-Appveyor\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Appveyor|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug-Appveyor\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Appveyor|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug-Appveyor\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Appveyor|AnyCPU'">
-    <OutputPath>bin\Release-Appveyor\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Appveyor|x64'">
-    <OutputPath>bin\x64\Release-Appveyor\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Appveyor|x86'">
-    <OutputPath>bin\x86\Release-Appveyor\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -144,19 +84,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if "Debug-Appveyor" == "$(ConfigurationName)" (call "$(VS100COMNTOOLS)VsDevCmd.bat" $(PlatformName)
-)
-
-if "Release-Appveyor" == "$(ConfigurationName)" (call "$(VS100COMNTOOLS)VsDevCmd.bat" $(PlatformName)
-)
-
-if "Debug" == "$(ConfigurationName)" (call "$(DevEnvDir)..\Tools\VsDevCmd.bat" $(PlatformName)
-)
-
-if "Release" == "$(ConfigurationName)" (call "$(DevEnvDir)..\Tools\VsDevCmd.bat" $(PlatformName)
-)
-
-tlbexp $(TargetFileName) /nologo</PostBuildEvent>
+    <PostBuildEvent>if not "" == "$(VS100COMNTOOLS)" (call "$(VS100COMNTOOLS)..\..\VC\vcvarsall.bat" x86)
+if not "*Undefined*" == "$(DevEnvDir)" (call "$(DevEnvDir)..\..\VC\vcvarsall.bat" x86)
+if "x86" == "$(PlatformName)" (tlbexp $(TargetFileName) /nologo /win32)
+if "x64" == "$(PlatformName)" (tlbexp $(TargetFileName) /nologo /win64)
+if "AnyCPU" == "$(PlatformName)" (tlbexp $(TargetFileName) /nologo)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

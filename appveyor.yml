@@ -1,6 +1,8 @@
-version: '{branch}.{build}'
+version: '1.0.0.{build}-alpha-{branch}'
 
-configuration: Release-Appveyor
+configuration: Release
+
+skip_tags: true
 
 platform:
 - x86
@@ -13,12 +15,12 @@ build:
   verbosity: normal
 
 after_build:
-- 7z a %APPVEYOR_PROJECT_NAME%-%PLATFORM%.zip %APPVEYOR_BUILD_FOLDER%\TestCOMServer\TestCOMServer\bin\%PLATFORM%\%CONFIGURATION%\*
+- 7z a %APPVEYOR_PROJECT_NAME%-%PLATFORM%.zip %APPVEYOR_BUILD_FOLDER%\TestCOMServer\TestCOMServer\bin\*\%CONFIGURATION%\*
 
 artifacts:
-- path: '**\bin\**\$(configuration)\*.dll'
+- path: '**\bin\**\*.dll'
   name: dll
-- path: '**\bin\**\$(configuration)\*.tlb'
+- path: '**\bin\**\*.tlb'
   name: tlb
 - path: '\*.zip'
   name: zip
