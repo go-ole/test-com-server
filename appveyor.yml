@@ -1,0 +1,34 @@
+version: '{branch}.{build}'
+
+configuration: Release-Appveyor
+
+platform:
+- x86
+- x64
+
+matrix:
+  fast_finish: true
+
+build:
+  verbosity: normal
+
+after_build:
+- 7z a %APPVEYOR_PROJECT_NAME%-%PLATFORM%.zip %APPVEYOR_BUILD_FOLDER%\TestCOMServer\TestCOMServer\bin\%PLATFORM%\%CONFIGURATION%\*
+
+artifacts:
+- path: '**\bin\**\$(configuration)\*.dll'
+  name: dll
+- path: '**\bin\**\$(configuration)\*.tlb'
+  name: tlb
+- path: '\*.zip'
+  name: zip
+
+deploy:
+- provider: GitHub
+  tag: v$(appveyor_build_version)
+  release: v$(appveyor_build_version)
+  auth_token:
+    secure: rqt6SiJaFS7qgPo55+zvwWonpmdZPjC8+/hB//2Fciy6zte12E/t39VbVnXFNDgG
+  artifact: zip
+  draft: true
+  prerelease: true
