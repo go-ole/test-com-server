@@ -144,11 +144,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if "" != "$(VS100COMNTOOLS)" (SET VSVARSALL=$(VS100COMNTOOLS)..\..\VC\vsvarsall.bat)
-if "" != "$(DevEnvDir)" (SET VSVARSALL=$(DevEnvDir)..\..\vsvarsall.bat)
-
-if "x32" == "$(PlatformName)" (call $(VSVARSALL) x86)
-if "x64" == "$(PlatformName)" (call $(VSVARSALL) amd64)
+    <PostBuildEvent>if not "" == "$(VS100COMNTOOLS)" (
+    if "x86" == "$(PlatformName)" (call "$(VS100COMNTOOLS)..\..\VC\vcvarsall.bat" x86)
+    if "x64" == "$(PlatformName)" (call "$(VS100COMNTOOLS)..\..\VC\vcvarsall.bat" amd64)
+)
+if not "*Undefined*" == "$(DevEnvDir)" (
+    if "x86" == "$(PlatformName)" (call "$(DevEnvDir)..\..\VC\vcvarsall.bat" x86)
+    if "x64" == "$(PlatformName)" (call "$(DevEnvDir)..\..\VC\vcvarsall.bat" amd64)
+)
 
 tlbexp $(TargetFileName) /nologo</PostBuildEvent>
   </PropertyGroup>
