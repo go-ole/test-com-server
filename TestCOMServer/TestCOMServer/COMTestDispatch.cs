@@ -119,14 +119,14 @@ namespace TestCOMServer
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface ICOMTestFloat
     {
-        float FloatField
+        float Float32Field
         {
             get;
             set;
         }
         
-        int PutFloat(float value);
-        float GetFloat();
+        int PutFloat32(float value);
+        float GetFloat32();
     }
 
     [ComVisible(true),
@@ -134,14 +134,14 @@ namespace TestCOMServer
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface ICOMTestDouble
     {
-        double DoubleField
+        double Float64Field
         {
             get;
             set;
         }
         
-        int PutDouble(double value);
-        double GetDouble();
+        int PutFloat64(double value);
+        double GetFloat64();
     }
 
     [ComVisible(true),
@@ -186,13 +186,13 @@ namespace TestCOMServer
         uint EchoUInt32(uint value);
         long EchoInt64(long value);
         ulong EchoUInt64(ulong value);
-        float EchoFloat(float value);
-        double EchoDouble(double value);
+        float EchoFloat32(float value);
+        double EchoFloat64(double value);
         string EchoString(string value);
     }
-
+    
     [ComVisible(true),
-        Guid("865B85C5-0334-4AC6-9EF6-AACEC8FC5E86"),
+        Guid("3C24506A-AE9E-4D50-9157-EF317281F1B0"),
         ClassInterface(ClassInterfaceType.AutoDual),
         ComSourceInterfaces(typeof(ICOMEchoTestObject))]
     public class COMEchoTestObject : ICOMEchoTestObject
@@ -244,12 +244,12 @@ namespace TestCOMServer
             return value;
         }
 
-        public float EchoFloat(float value)
+        public float EchoFloat32(float value)
         {
             return value;
         }
 
-        public double EchoDouble(double value)
+        public double EchoFloat64(double value)
         {
             return value;
         }
@@ -333,13 +333,13 @@ namespace TestCOMServer
             set { rawUInt64 = value; }
         }
 
-        public float FloatField
+        public float Float32Field
         {
             get { return rawFloat; }
             set { rawFloat = value; }
         }
 
-        public double DoubleField
+        public double Float64Field
         {
             get { return rawDouble; }
             set { rawDouble = value; }
@@ -354,9 +354,14 @@ namespace TestCOMServer
         COMTestScalarClass()
         {
             rawString = "";
+            rawInt8 = 0;
+            rawUInt8 = 0;
             rawInt16 = 0;
+            rawUInt16 = 0;
             rawInt32 = 0;
+            rawUInt32 = 0;
             rawInt64 = 0;
+            rawUInt64 = 0;
             rawFloat = 0.0f;
             rawDouble = 0.0;
             rawBoolean = false;
@@ -461,24 +466,24 @@ namespace TestCOMServer
             return rawUInt64;
         }
 
-        public int PutFloat(float value)
+        public int PutFloat32(float value)
         {
             rawFloat = value;
             return 1;
         }
 
-        public float GetFloat()
+        public float GetFloat32()
         {
             return rawFloat;
         }
 
-        public int PutDouble(double value)
+        public int PutFloat64(double value)
         {
             rawDouble = value;
             return 1;
         }
 
-        public double GetDouble()
+        public double GetFloat64()
         {
             return rawDouble;
         }
