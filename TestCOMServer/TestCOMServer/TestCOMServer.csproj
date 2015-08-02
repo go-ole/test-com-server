@@ -136,12 +136,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="COMTestDispatch.cs" />
@@ -149,14 +144,18 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if "Debug-Appveyor" == "$(ConfigurationName)" (call "$(VS100COMNTOOLS)vsvars32.bat"
+    <PostBuildEvent>if "Debug-Appveyor" == "$(ConfigurationName)" (call "$(VS100COMNTOOLS)VsDevCmd.bat" $(PlatformName)
 )
-if "Release-Appveyor" == "$(ConfigurationName)" (call "$(VS100COMNTOOLS)vsvars32.bat"
+
+if "Release-Appveyor" == "$(ConfigurationName)" (call "$(VS100COMNTOOLS)VsDevCmd.bat" $(PlatformName)
 )
-if "Debug" == "$(ConfigurationName)" (call "$(DevEnvDir)..\Tools\vsvars32.bat"
+
+if "Debug" == "$(ConfigurationName)" (call "$(DevEnvDir)..\Tools\VsDevCmd.bat" $(PlatformName)
 )
-if "Release" == "$(ConfigurationName)" (call "$(DevEnvDir)..\Tools\vsvars32.bat"
+
+if "Release" == "$(ConfigurationName)" (call "$(DevEnvDir)..\Tools\VsDevCmd.bat" $(PlatformName)
 )
+
 tlbexp $(TargetFileName) /nologo</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
