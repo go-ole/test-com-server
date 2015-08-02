@@ -2,6 +2,8 @@ version: '1.0.0.{build}-alpha-{branch}'
 
 configuration: Release
 
+skip_tags: true
+
 platform:
 - x86
 - x64
