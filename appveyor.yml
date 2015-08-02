@@ -1,4 +1,4 @@
-version: '{branch}.{build}'
+version: '1.0.0.{build}-alpha-{branch}'
 
 configuration: Release-Appveyor
 
