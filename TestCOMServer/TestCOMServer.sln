@@ -10,9 +10,15 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Debug-Appveyor|Any CPU = Debug-Appveyor|Any CPU
+		Debug-Appveyor|x64 = Debug-Appveyor|x64
+		Debug-Appveyor|x86 = Debug-Appveyor|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
+		Release-Appveyor|Any CPU = Release-Appveyor|Any CPU
+		Release-Appveyor|x64 = Release-Appveyor|x64
+		Release-Appveyor|x86 = Release-Appveyor|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -21,12 +27,24 @@ Global
 		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Debug|x64.Build.0 = Debug|x64
 		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Debug|x86.ActiveCfg = Debug|x86
 		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Debug|x86.Build.0 = Debug|x86
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Debug-Appveyor|Any CPU.ActiveCfg = Debug-Appveyor|Any CPU
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Debug-Appveyor|Any CPU.Build.0 = Debug-Appveyor|Any CPU
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Debug-Appveyor|x64.ActiveCfg = Debug-Appveyor|x64
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Debug-Appveyor|x64.Build.0 = Debug-Appveyor|x64
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Debug-Appveyor|x86.ActiveCfg = Debug-Appveyor|x86
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Debug-Appveyor|x86.Build.0 = Debug-Appveyor|x86
 		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release|x64.ActiveCfg = Release|Any CPU
 		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release|x64.Build.0 = Release|Any CPU
 		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release|x86.ActiveCfg = Release|x86
 		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release|x86.Build.0 = Release|x86
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release-Appveyor|Any CPU.ActiveCfg = Release-Appveyor|Any CPU
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release-Appveyor|Any CPU.Build.0 = Release-Appveyor|Any CPU
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release-Appveyor|x64.ActiveCfg = Release-Appveyor|x64
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release-Appveyor|x64.Build.0 = Release-Appveyor|x64
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release-Appveyor|x86.ActiveCfg = Release-Appveyor|x86
+		{AC11D114-EBEE-4D2F-B968-127F155E4F6E}.Release-Appveyor|x86.Build.0 = Release-Appveyor|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
