@@ -1,5 +1,7 @@
 # .NET COM Test Server
 
+[![Build status](https://ci.appveyor.com/api/projects/status/xoc104acavrbyahu/branch/master?svg=true)](https://ci.appveyor.com/project/jacobsantos/test-com-server-9pdfn/branch/master)
+
 Visual Studio 2013 Community Edition project for creating a COM server for testing in C#.
 
 This should be easier to create using the .NET framework and annotations in C# to test various parts of the COM library.
