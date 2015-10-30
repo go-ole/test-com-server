@@ -28,56 +28,57 @@ namespace TestCOMServer
         ComSourceInterfaces(typeof(ICOMSafeArray))]
     class COMSafeArray : ICOMSafeArray
     {
-        sbyte[] EchoInt8Array(sbyte[] value)
+        public sbyte[] EchoInt8Array(sbyte[] value)
         {
             return value;
         }
 
-        byte[] EchoUInt8(byte[] value)
+        public byte[] EchoUInt8(byte[] value)
         {
             return value;
         }
 
-        short[] EchoInt16(short[] value)
+        public short[] EchoInt16(short[] value)
         {
             return value;
         }
 
-        ushort[] EchoUInt16(ushort[] value)
-        {
-            return value;
-        }
-        int[] EchoInt32(int[] value)
+        public ushort[] EchoUInt16(ushort[] value)
         {
             return value;
         }
 
-        uint[] EchoUInt32(uint[] value)
+        public int[] EchoInt32(int[] value)
         {
             return value;
         }
 
-        long[] EchoInt64(long[] value)
+        public uint[] EchoUInt32(uint[] value)
         {
             return value;
         }
 
-        ulong[] EchoUInt64(ulong[] value)
+        public long[] EchoInt64(long[] value)
         {
             return value;
         }
 
-        float[] EchoFloat32(float[] value)
+        public ulong[] EchoUInt64(ulong[] value)
         {
             return value;
         }
 
-        double[] EchoFloat64(double[] value)
+        public float[] EchoFloat32(float[] value)
         {
             return value;
         }
 
-        string[] EchoString(string[] value)
+        public double[] EchoFloat64(double[] value)
+        {
+            return value;
+        }
+
+        public string[] EchoString(string[] value)
         {
             return value;
         }
