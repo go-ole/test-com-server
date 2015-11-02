@@ -189,6 +189,7 @@ namespace TestCOMServer
         float EchoFloat32(float value);
         double EchoFloat64(double value);
         string EchoString(string value);
+        bool EchoBoolean(bool value);
     }
     
     [ComVisible(true),
@@ -197,17 +198,19 @@ namespace TestCOMServer
         ComSourceInterfaces(typeof(ICOMEchoTestObject))]
     public class COMEchoTestObject : ICOMEchoTestObject
     {
-        public string EchoString(string value)
+        public COMEchoTestObject()
+        {
+        }
+
+        public String EchoString(String value)
         {
             return value;
         }
-
 
         public sbyte EchoInt8(sbyte value)
         {
             return value;
         }
-
 
         public byte EchoUInt8(byte value)
         {
@@ -351,7 +354,7 @@ namespace TestCOMServer
             set { rawBoolean = value; }
         }
 
-        COMTestScalarClass()
+        public COMTestScalarClass()
         {
             rawString = "";
             rawInt8 = 0;
