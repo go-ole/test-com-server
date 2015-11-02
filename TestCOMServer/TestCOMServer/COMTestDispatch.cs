@@ -171,7 +171,115 @@ namespace TestCOMServer
         ICOMTestFloat,
         ICOMTestDouble,
         ICOMTestBoolean
-    { }
+    {
+        new string StringField
+        {
+            get;
+            set;
+        }
+
+        new int PutString(string value);
+        new string GetString();
+
+        new sbyte Int8Field
+        {
+            get;
+            set;
+        }
+
+        new byte UInt8Field
+        {
+            get;
+            set;
+        }
+
+        new int PutInt8(sbyte value);
+        new sbyte GetInt8();
+
+        new int PutUInt8(byte value);
+        new byte GetUInt8();
+
+        new short Int16Field
+        {
+            get;
+            set;
+        }
+
+        new ushort UInt16Field
+        {
+            get;
+            set;
+        }
+
+        new int PutInt16(short value);
+        new short GetInt16();
+
+        new int PutUInt16(ushort value);
+        new ushort GetUInt16();
+
+        new int Int32Field
+        {
+            get;
+            set;
+        }
+
+        new uint UInt32Field
+        {
+            get;
+            set;
+        }
+
+        new int PutInt32(int value);
+        new int GetInt32();
+
+        new int PutUInt32(uint value);
+        new uint GetUInt32();
+
+        new long Int64Field
+        {
+            get;
+            set;
+        }
+
+        new ulong UInt64Field
+        {
+            get;
+            set;
+        }
+
+        new int PutInt64(long value);
+        new long GetInt64();
+
+        new int PutUInt64(ulong value);
+        new ulong GetUInt64();
+
+        new float Float32Field
+        {
+            get;
+            set;
+        }
+
+        new int PutFloat32(float value);
+        new float GetFloat32();
+
+        new double Float64Field
+        {
+            get;
+            set;
+        }
+
+        new int PutFloat64(double value);
+        new double GetFloat64();
+
+        new bool BooleanField
+        {
+            get;
+            set;
+        }
+
+        new int PutBoolean(bool value);
+        new bool GetBoolean();
+    }
 
     [ComVisible(true),
         Guid("6485B1EF-D780-4834-A4FE-1EBB51746CA3"),
@@ -194,7 +302,8 @@ namespace TestCOMServer
     
     [ComVisible(true),
         Guid("3C24506A-AE9E-4D50-9157-EF317281F1B0"),
-        ClassInterface(ClassInterfaceType.AutoDual),
+        ClassInterface(ClassInterfaceType.None),
+        ProgId("GOOLE.COMEchoTestObject"),
         ComSourceInterfaces(typeof(ICOMEchoTestObject))]
     public class COMEchoTestObject : ICOMEchoTestObject
     {
@@ -265,7 +374,8 @@ namespace TestCOMServer
 
     [ComVisible(true),
         Guid("865B85C5-0334-4AC6-9EF6-AACEC8FC5E86"),
-        ClassInterface(ClassInterfaceType.AutoDual),
+        ClassInterface(ClassInterfaceType.None),
+        ProgId("GOOLE.COMTestScalarClass"),
         ComSourceInterfaces(typeof(ICOMTestTypes))]
     public class COMTestScalarClass : ICOMTestTypes
     {
