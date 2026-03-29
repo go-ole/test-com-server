@@ -6,7 +6,7 @@
  1. New ProgID convention: `TestCOM.<Type>`, `TestCOM.SafeArray.<Type>`, `TestCOM.Interface.<Pattern>`.
  1. Scalar VARIANT types:
     1. Existing: `Int8/UInt8`, `Int16/UInt16`, `Int32/UInt32`, `Int64/UInt64`, `Float32`, `Float64`, `String`, `Boolean`.
-    1. New: `Currency` (VT_CY), `Date` (VT_DATE), `Decimal` (VT_DECIMAL), `Error` (VT_ERROR), `Variant` (VT_VARIANT), `Unknown` (VT_UNKNOWN), `Dispatch` (VT_DISPATCH), `Empty/Null` (VT_EMPTY/VT_NULL).
+    1. New: `Currency` (VT_CY), `Date` (VT_DATE), `Decimal` (VT_DECIMAL), `Error` (VT_ERROR), `Variant` (VT_VARIANT), `Unknown` (VT_UNKNOWN), `Dispatch` (VT_DISPATCH), `Empty/Null` (VT_EMPTY/VT_NULL), `Clsid` (VT_CLSID), `HResult` (VT_HRESULT).
  1. SafeArray support with 1D, 2D, and 3D arrays for: Int8/UInt8, Int16/UInt16, Int32/UInt32, Int64/UInt64, Float32, Float64, String, Boolean, Currency, Date, Decimal, Variant.
  1. COM interface pattern test classes:
     1. Dual interface (IDispatch + vtable).
