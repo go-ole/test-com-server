@@ -15,8 +15,5 @@
     <Copyright>Copyright Go-OLE 2015</Copyright>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Using Include="System.Runtime.InteropServices" />
-  </ItemGroup>
 
 </Project>

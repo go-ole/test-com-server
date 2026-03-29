@@ -8,7 +8,6 @@ namespace TestCOMServer
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface ICOMTestUnknown
     {
-        [return: MarshalAs(UnmanagedType.IUnknown)]
         object UnknownField
         {
             [return: MarshalAs(UnmanagedType.IUnknown)]

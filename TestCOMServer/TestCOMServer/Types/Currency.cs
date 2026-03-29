@@ -8,7 +8,6 @@ namespace TestCOMServer
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface ICOMTestCurrency
     {
-        [return: MarshalAs(UnmanagedType.Currency)]
         decimal CurrencyField
         {
             [return: MarshalAs(UnmanagedType.Currency)]

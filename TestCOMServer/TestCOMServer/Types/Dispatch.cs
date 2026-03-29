@@ -8,7 +8,6 @@ namespace TestCOMServer
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface ICOMTestDispatch
     {
-        [return: MarshalAs(UnmanagedType.IDispatch)]
         object DispatchField
         {
             [return: MarshalAs(UnmanagedType.IDispatch)]

@@ -8,7 +8,6 @@ namespace TestCOMServer
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface ICOMTestError
     {
-        [return: MarshalAs(UnmanagedType.Error)]
         int ErrorField
         {
             [return: MarshalAs(UnmanagedType.Error)]
