@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <LangVersion>13</LangVersion>
     <OutputType>Library</OutputType>
     <RootNamespace>TestCOMServer</RootNamespace>
     <AssemblyName>TestCOMServer</AssemblyName>
@@ -15,5 +16,8 @@
     <Copyright>Copyright Go-OLE 2015</Copyright>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Using Include="System.Runtime.InteropServices" />
+  </ItemGroup>
 
 </Project>
