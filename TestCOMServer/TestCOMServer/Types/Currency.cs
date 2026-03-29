@@ -8,21 +8,10 @@ namespace TestCOMServer
         InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface ICOMTestCurrency
     {
-        decimal CurrencyField
-        {
-            [return: MarshalAs(UnmanagedType.Currency)]
-            get;
-            [param: MarshalAs(UnmanagedType.Currency)]
-            set;
-        }
-
-        int PutCurrency([MarshalAs(UnmanagedType.Currency)] decimal value);
-
-        [return: MarshalAs(UnmanagedType.Currency)]
-        decimal GetCurrency();
-
-        [return: MarshalAs(UnmanagedType.Currency)]
-        decimal EchoCurrency([MarshalAs(UnmanagedType.Currency)] decimal value);
+        long CurrencyField { get; set; }
+        int PutCurrency(long value);
+        long GetCurrency();
+        long EchoCurrency(long value);
     }
 
     [ComVisible(true),
@@ -32,21 +21,21 @@ namespace TestCOMServer
         ComSourceInterfaces(typeof(ICOMTestCurrency))]
     public class COMTestCurrency : ICOMTestCurrency
     {
-        protected decimal rawCurrency;
+        protected long rawCurrency;
 
         public COMTestCurrency()
         {
-            rawCurrency = 0m;
+            rawCurrency = 0;
         }
 
-        public decimal CurrencyField
+        public long CurrencyField
         {
             get { return rawCurrency; }
             set { rawCurrency = value; }
         }
 
-        public int PutCurrency(decimal value) { rawCurrency = value; return 1; }
-        public decimal GetCurrency() { return rawCurrency; }
-        public decimal EchoCurrency(decimal value) { return value; }
+        public int PutCurrency(long value) { rawCurrency = value; return 1; }
+        public long GetCurrency() { return rawCurrency; }
+        public long EchoCurrency(long value) { return value; }
     }
 }
