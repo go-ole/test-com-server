@@ -37,12 +37,31 @@ jobs:
       run: dotnet publish --configuration ${{ matrix.configuration }} --runtime win-${{ matrix.platform }} --self-contained false --output publish/${{ matrix.platform }}
       working-directory: TestCOMServer/TestCOMServer
 
+    - name: Create stub executable
+      shell: pwsh
+      run: |
+        # Minimal C# console app as MSIX entry point stub
+        $stubDir = "stub-src"
+        New-Item -ItemType Directory -Force -Path $stubDir
+        Set-Content "$stubDir/stub.cs" "class Stub { static void Main() { } }"
+        Set-Content "$stubDir/stub.csproj" @"
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <OutputType>Exe</OutputType>
+            <TargetFramework>net9.0-windows</TargetFramework>
+            <AssemblyName>stub</AssemblyName>
+          </PropertyGroup>
+        </Project>
+        "@
+        dotnet publish "$stubDir/stub.csproj" -c Release -r win-${{ matrix.platform }} --self-contained false -o stub-out
+
     - name: Prepare MSIX layout
       shell: pwsh
       run: |
         $layout = "msix-layout/${{ matrix.platform }}"
         New-Item -ItemType Directory -Force -Path $layout
         Copy-Item "TestCOMServer/TestCOMServer/publish/${{ matrix.platform }}/*" -Destination $layout -Recurse
+        Copy-Item "stub-out/stub.exe" -Destination $layout
         Copy-Item "TestCOMServer/TestCOMServer.Package/AppxManifest.xml" -Destination $layout
         Copy-Item "TestCOMServer/TestCOMServer.Package/Assets" -Destination "$layout/Assets" -Recurse
 
