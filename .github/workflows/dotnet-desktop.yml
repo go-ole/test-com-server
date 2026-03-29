@@ -1,8 +1,9 @@
-name: .NET Build
+name: .NET Build & Package
 
 on:
   push:
     branches: [ "master" ]
+    tags: [ "v*" ]
   pull_request:
     branches: [ "master" ]
 
@@ -10,7 +11,8 @@ jobs:
   build:
     strategy:
       matrix:
-        configuration: [Debug, Release]
+        configuration: [Release]
+        platform: [x64, x86]
 
     runs-on: windows-latest
 
@@ -30,3 +32,63 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration ${{ matrix.configuration }}
       working-directory: TestCOMServer
+
+    - name: Publish
+      run: dotnet publish --configuration ${{ matrix.configuration }} --runtime win-${{ matrix.platform }} --self-contained false --output publish/${{ matrix.platform }}
+      working-directory: TestCOMServer/TestCOMServer
+
+    - name: Prepare MSIX layout
+      shell: pwsh
+      run: |
+        $layout = "msix-layout/${{ matrix.platform }}"
+        New-Item -ItemType Directory -Force -Path $layout
+        Copy-Item "TestCOMServer/TestCOMServer/publish/${{ matrix.platform }}/*" -Destination $layout -Recurse
+        Copy-Item "TestCOMServer/TestCOMServer.Package/AppxManifest.xml" -Destination $layout
+        Copy-Item "TestCOMServer/TestCOMServer.Package/Assets" -Destination "$layout/Assets" -Recurse
+
+        # Patch architecture in manifest
+        $manifest = Get-Content "$layout/AppxManifest.xml" -Raw
+        $manifest = $manifest -replace 'ProcessorArchitecture="x64"', 'ProcessorArchitecture="${{ matrix.platform }}"'
+        Set-Content "$layout/AppxManifest.xml" $manifest
+
+    - name: Create MSIX package
+      shell: pwsh
+      run: |
+        $sdkPath = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin\10.*\x64\makeappx.exe" | Sort-Object | Select-Object -Last 1
+        & $sdkPath.FullName pack /d "msix-layout/${{ matrix.platform }}" /p "TestCOMServer-${{ matrix.platform }}.msix" /nv
+        Write-Host "Created TestCOMServer-${{ matrix.platform }}.msix"
+
+    - name: Create ZIP artifact
+      shell: pwsh
+      run: |
+        Compress-Archive -Path "TestCOMServer/TestCOMServer/publish/${{ matrix.platform }}/*" -DestinationPath "TestCOMServer-${{ matrix.platform }}.zip"
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: TestCOMServer-${{ matrix.platform }}
+        path: |
+          TestCOMServer-${{ matrix.platform }}.msix
+          TestCOMServer-${{ matrix.platform }}.zip
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: artifacts
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        draft: false
+        generate_release_notes: true
+        files: |
+          artifacts/**/*.msix
+          artifacts/**/*.zip

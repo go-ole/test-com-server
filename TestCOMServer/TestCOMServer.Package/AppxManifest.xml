@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+         xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+         IgnorableNamespaces="com uap rescap">
+
+  <Identity Name="GoOLE.TestCOMServer"
+            Publisher="CN=GoOLE"
+            Version="2.0.0.0"
+            ProcessorArchitecture="x64" />
+
+  <Properties>
+    <DisplayName>TestCOMServer</DisplayName>
+    <PublisherDisplayName>Go-OLE</PublisherDisplayName>
+    <Description>COM test server for go-ole library testing</Description>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+
+  <Applications>
+    <Application Id="TestCOMServer" Executable="TestCOMServer.comhost.dll" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements DisplayName="TestCOMServer"
+                          Description="COM test server for go-ole"
+                          Square150x150Logo="Assets\Square150x150Logo.png"
+                          Square44x44Logo="Assets\Square44x44Logo.png"
+                          BackgroundColor="transparent"
+                          AppListEntry="none" />
+      <Extensions>
+        <com:Extension Category="windows.comServer">
+          <com:ComServer>
+            <com:SurrogateServer DisplayName="TestCOMServer">
+
+              <!-- Scalar Types -->
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000002" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Int8" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000004" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Int16" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000006" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Int32" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000008" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Int64" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-00000000000A" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Float32" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-00000000000C" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Float64" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-00000000000E" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.String" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000010" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Boolean" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000012" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Currency" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000014" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Date" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000016" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Decimal" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000018" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Error" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-00000000001A" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Variant" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-00000000001C" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Unknown" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-00000000001E" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Dispatch" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000020" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Empty" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000022" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Clsid" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000024" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.HResult" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000026" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.FileTime" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-000000000028" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Stream" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-00000000002B" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Blob" />
+              <com:Class Id="A1B2C3D4-1111-1111-1111-00000000002D" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Ptr" />
+
+              <!-- Interface Pattern Classes -->
+              <com:Class Id="A1B2C3D4-3333-3333-3333-000000000002" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Interface.Dual" />
+              <com:Class Id="A1B2C3D4-3333-3333-3333-000000000004" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Interface.UnknownOnly" />
+              <com:Class Id="A1B2C3D4-3333-3333-3333-000000000006" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Interface.DispatchOnly" />
+              <com:Class Id="A1B2C3D4-3333-3333-3333-00000000000A" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Interface.Multiple" />
+              <com:Class Id="A1B2C3D4-3333-3333-3333-00000000000D" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Interface.Inherited" />
+              <com:Class Id="A1B2C3D4-3333-3333-3333-00000000000F" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.Interface.ConnectionPoint" />
+
+              <!-- SafeArray Classes -->
+              <com:Class Id="A1B2C3D4-2222-2222-2222-000000000002" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Int8" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-000000000004" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Int16" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-000000000006" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Int32" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-000000000008" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Int64" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-00000000000A" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Float32" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-00000000000C" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Float64" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-00000000000E" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.String" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-000000000010" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Boolean" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-000000000012" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Currency" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-000000000014" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Date" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-000000000016" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Decimal" />
+              <com:Class Id="A1B2C3D4-2222-2222-2222-000000000018" Path="TestCOMServer.comhost.dll" ThreadingModel="Both" DisplayName="TestCOM.SafeArray.Variant" />
+
+            </com:SurrogateServer>
+          </com:ComServer>
+        </com:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+
+</Package>
